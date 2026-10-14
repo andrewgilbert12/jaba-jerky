@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout>
+  <section class="hero section">
+    <div class="container">
+      <h1>{site.tagline}</h1>
+      <p class="lead">
+        Jaba Jerky is plant-based jerky made from organic tofu: marinated, slow-smoked, and
+        built for snacking.
+      </p>
+      <div class="actions">
+        <a class="button" href="/shop">See the flavors</a>
+        <a href="/about">Our story &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid">
+      <div class="card">
+        <h2>Plant-powered</h2>
+        <p>100% vegan, made from organic, non-GMO tofu.</p>
+      </div>
+      <div class="card">
+        <h2>Real chew</h2>
+        <p>Pressed and slow-smoked so it tears like jerky should.</p>
+      </div>
+      <div class="card">
+        <h2>Big flavor</h2>
+        <p>Bold marinades, from classic smoked to spicy chipotle.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding-block: 5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-block: 0 1rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+</style>
