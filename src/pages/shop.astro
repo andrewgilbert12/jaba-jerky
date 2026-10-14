@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPrice, products } from '../data/products';
+
+// TODO(e-commerce): pick a commerce backend and wire it up. Options worth evaluating:
+//   - Shopify (Storefront API or Buy Button): inventory, tax, and shipping handled for us.
+//   - Stripe Checkout / Payment Links: lightweight, but we own inventory and shipping logic.
+//   - Snipcart: drop-in cart that works with a static site.
+// Once chosen, this page should:
+//   - load products from the provider instead of src/data/products.ts
+//   - add per-product pages (src/pages/shop/[slug].astro)
+//   - add a cart and checkout flow
+//   - add order confirmation, shipping, and returns policy pages
+---
+
+<BaseLayout title="Shop" description="Jaba Jerky flavors. Online ordering coming soon.">
+  <section class="section">
+    <div class="container">
+      <h1>Shop</h1>
+      <p class="notice card">
+        <strong>Online ordering is coming soon.</strong> Here’s a preview of the lineup.
+      </p>
+
+      <div class="grid">
+        {
+          products.map((product) => (
+            <article class="card product">
+              <h2>{product.name}</h2>
+              <p>{product.description}</p>
+              <p class="price">{formatPrice(product.priceCents)}</p>
+              <button class="button" type="button" disabled={!product.available}>
+                {product.available ? 'Add to cart' : 'Coming soon'}
+              </button>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notice {
+    margin-bottom: 2rem;
+  }
+
+  .product h2 {
+    margin-top: 0;
+  }
+
+  .price {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+</style>

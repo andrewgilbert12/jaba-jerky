@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { faqs } from '../data/faq';
+import { site } from '../data/site';
+---
+
+<BaseLayout title="FAQ" description="Answers to common questions about Jaba Jerky.">
+  <section class="section">
+    <div class="container faq">
+      <h1>Frequently asked questions</h1>
+
+      {
+        faqs.map(({ question, answer }) => (
+          <details class="card">
+            <summary>{question}</summary>
+            <p>{answer}</p>
+          </details>
+        ))
+      }
+
+      <p class="muted">
+        Still have a question? Email us at <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .faq {
+    max-width: 44rem;
+  }
+
+  details {
+    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  details p {
+    margin-bottom: 0;
+  }
+</style>
