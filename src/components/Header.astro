@@ -1,12 +1,13 @@
 ---
-import { navLinks, site } from '../data/site';
+import Wordmark from './Wordmark.astro';
+import { navLinks } from '../data/site';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 
 <header class="site-header">
   <div class="container inner">
-    <a href="/" class="logo">{site.name}</a>
+    <a href="/" class="logo" aria-label="Jaba Jerky home"><Wordmark size="1.75rem" /></a>
     <nav aria-label="Main">
       <ul>
         {
@@ -25,8 +26,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 <style>
   .site-header {
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-surface);
+    background: var(--color-bg);
+    border-bottom: 3px solid var(--brand-pink);
   }
 
   .inner {
@@ -39,10 +40,6 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
 
   .logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-brand);
     text-decoration: none;
   }
 
@@ -56,13 +53,21 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   }
 
   nav a {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     color: var(--color-text);
     text-decoration: none;
-    font-weight: 500;
   }
 
   nav a:hover,
   nav a[aria-current='page'] {
-    color: var(--color-accent);
+    color: var(--brand-pink);
+  }
+
+  nav a[aria-current='page'] {
+    text-decoration: underline wavy var(--brand-pink) 2px;
+    text-underline-offset: 6px;
   }
 </style>

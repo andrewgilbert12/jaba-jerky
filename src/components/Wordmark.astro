@@ -1,0 +1,27 @@
+---
+// The "JABA JERKY" wordmark: Oi in brand pink with a white drop shadow, as in the brand deck.
+interface Props {
+  as?: 'span' | 'h1' | 'p';
+  size?: string;
+}
+
+const { as: Tag = 'span', size = '1.5rem' } = Astro.props;
+---
+
+<Tag class="wordmark" style={`--wordmark-size: ${size}`}>Jaba Jerky</Tag>
+
+<style>
+  .wordmark {
+    display: inline-block;
+    margin: 0;
+    font-family: var(--font-wordmark);
+    font-size: var(--wordmark-size);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--brand-pink);
+    text-shadow: -0.07em 0.07em 0 var(--brand-white);
+    white-space: nowrap;
+  }
+</style>

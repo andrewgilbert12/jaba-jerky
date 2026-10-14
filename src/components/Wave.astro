@@ -1,0 +1,28 @@
+---
+// Wavy rule used under taglines in the brand deck and on the pack.
+interface Props {
+  color?: string;
+}
+
+const { color = 'var(--brand-white)' } = Astro.props;
+---
+
+<svg class="wave" viewBox="0 0 400 16" preserveAspectRatio="none" aria-hidden="true">
+  <path
+    d="M2 8 Q 27 0 52 8 T 102 8 T 152 8 T 202 8 T 252 8 T 302 8 T 352 8 T 398 8"
+    fill="none"
+    stroke={color}
+    stroke-width="4"
+    stroke-linecap="round"
+    vector-effect="non-scaling-stroke"></path>
+</svg>
+
+<style>
+  .wave {
+    display: block;
+    width: 100%;
+    max-width: 28rem;
+    height: 1rem;
+    margin-inline: auto;
+  }
+</style>
