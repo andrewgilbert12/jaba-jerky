@@ -1,36 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../data/site';
+import Wordmark from '../components/Wordmark.astro';
+import Wave from '../components/Wave.astro';
 ---
 
 <BaseLayout>
   <section class="hero section">
-    <div class="container">
-      <h1>{site.tagline}</h1>
-      <p class="lead">
-        Jaba Jerky is plant-based jerky made from organic tofu: marinated, slow-smoked, and
-        built for snacking.
-      </p>
-      <div class="actions">
-        <a class="button" href="/shop">See the flavors</a>
-        <a href="/about">Our story &rarr;</a>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <Wordmark as="h1" size="clamp(2rem, 7vw, 4.5rem)" />
+        <p class="label flavor">Chili garlic flavored tofu jerky</p>
+        <Wave />
+        <p class="label claims">High protein <span aria-hidden="true">*</span> Low fat <span aria-hidden="true">*</span> Low sodium</p>
+        <div class="actions">
+          <a class="button" href="/shop">See the flavors</a>
+          <a href="/about">Our story &rarr;</a>
+        </div>
       </div>
+      <img
+        class="packs"
+        src="/images/packs-chili-garlic.png"
+        alt="Two pink Jaba Jerky Chili Garlic packs, one torn open with a piece of tofu jerky sticking out"
+        width="560"
+        height="1113"
+      />
     </div>
   </section>
 
-  <section class="section">
+  <section class="band section">
     <div class="container grid">
       <div class="card">
-        <h2>Plant-powered</h2>
-        <p>100% vegan, made from organic, non-GMO tofu.</p>
+        <span class="star" aria-hidden="true">*</span>
+        <h2>12g protein</h2>
+        <p>Every pack is a proper protein hit, made from tofu.</p>
       </div>
       <div class="card">
-        <h2>Real chew</h2>
-        <p>Pressed and slow-smoked so it tears like jerky should.</p>
+        <span class="star" aria-hidden="true">*</span>
+        <h2>Low fat, low sodium</h2>
+        <p>All the snack, none of the salt bomb.</p>
       </div>
       <div class="card">
-        <h2>Big flavor</h2>
-        <p>Bold marinades, from classic smoked to spicy chipotle.</p>
+        <span class="star" aria-hidden="true">*</span>
+        <h2>Vegan &amp; gluten-free</h2>
+        <p>100% plant-based, with chili garlic flavor in every bite.</p>
       </div>
     </div>
   </section>
@@ -38,19 +50,29 @@ import { site } from '../data/site';
 
 <style>
   .hero {
+    padding-block: 3rem 4rem;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .hero-copy {
     text-align: center;
-    padding-block: 5rem;
   }
 
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-block: 0 1rem;
+  .hero-copy :global(h1) {
+    margin-bottom: 1.5rem;
   }
 
-  .lead {
-    font-size: 1.2rem;
-    max-width: 40rem;
-    margin-inline: auto;
+  .flavor,
+  .claims {
+    font-size: clamp(1.4rem, 3.2vw, 2.25rem);
+    line-height: 1.15;
+    margin-block: 0.75rem;
   }
 
   .actions {
@@ -60,5 +82,48 @@ import { site } from '../data/site';
     align-items: center;
     gap: 1.5rem;
     margin-top: 2rem;
+  }
+
+  .actions a:not(.button) {
+    font-weight: 600;
+  }
+
+  .packs {
+    width: clamp(9rem, 22vw, 15rem);
+    filter: drop-shadow(6px 8px 0 rgb(58 10 31 / 0.15));
+  }
+
+  @media (max-width: 40rem) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .packs {
+      justify-self: center;
+      grid-row: 2;
+    }
+  }
+
+  .band {
+    background: var(--brand-teal);
+  }
+
+  .band .card {
+    position: relative;
+    box-shadow: 6px 6px 0 var(--brand-yellow);
+  }
+
+  .band h2 {
+    margin-block: 0 0.5rem;
+  }
+
+  .star {
+    position: absolute;
+    top: 0.25rem;
+    right: 1rem;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--brand-yellow);
   }
 </style>

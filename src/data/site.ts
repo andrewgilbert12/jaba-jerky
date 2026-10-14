@@ -1,6 +1,6 @@
 export const site = {
   name: 'Jaba Jerky',
-  tagline: 'Smoky, chewy, protein-packed tofu jerky.',
+  tagline: 'Chili garlic tofu jerky. High protein, low fat, low sodium.',
   description:
     'Jaba Jerky makes plant-based jerky from organic tofu, marinated and slow-smoked for real jerky chew.',
   // TODO: replace with real contact details.

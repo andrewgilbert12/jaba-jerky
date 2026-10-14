@@ -1,29 +1,33 @@
+/*
+ * Brand tokens from the Jaba Jerky brand deck (Google Slides).
+ * Pink-on-yellow is the core look. Pink only passes contrast on yellow at display
+ * sizes, so body copy and links use --color-text instead.
+ */
 :root {
-  --color-bg: #faf6ef;
-  --color-surface: #ffffff;
-  --color-text: #2b2118;
-  --color-muted: #6b5d50;
-  --color-brand: #5a3e2b;
-  --color-accent: #c8742c;
-  --color-border: #e6dccd;
+  --brand-yellow: #fecb05;
+  --brand-pink: #ff006f;
+  --brand-teal: #0097a7;
+  --brand-cream: #ffe08a; /* wordmark fill on the pack */
+  --brand-blush: #f79ac0; /* wordmark shadow on the pack */
+  --brand-white: #ffffff;
+
+  --color-bg: var(--brand-yellow);
+  --color-surface: var(--brand-white);
+  --color-text: #3a0a1f;
+  --color-muted: #6e3a4c;
+  --color-brand: var(--brand-pink);
+  --color-accent: var(--brand-pink);
+  --color-border: #3a0a1f;
 
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: Georgia, 'Times New Roman', serif;
+  --font-display: 'Staatliches', 'Arial Narrow', Impact, sans-serif;
+  --font-wordmark: 'Oi', 'Staatliches', Impact, sans-serif;
 
   --max-width: 64rem;
   --radius: 0.75rem;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #1c1612;
-    --color-surface: #261e18;
-    --color-text: #f3ebe0;
-    --color-muted: #b9a998;
-    --color-brand: #e2b48a;
-    --color-accent: #e8964f;
-    --color-border: #3d3128;
-  }
+  /* The palette is the brand, so it stays the same in dark mode. */
+  color-scheme: light;
 }
 
 *,
@@ -44,6 +48,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--color-bg);
 }
 
 main {
@@ -54,12 +59,30 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
+  font-weight: 400;
   color: var(--color-brand);
-  line-height: 1.2;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-text);
+  text-decoration-color: var(--brand-pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--brand-pink);
 }
 
 img {
@@ -78,29 +101,49 @@ img {
   padding-block: 3rem;
 }
 
+/* Uppercase Staatliches label, as in "HIGH PROTEIN * LOW FAT * LOW SODIUM". */
+.label {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--brand-pink);
+}
+
 .button {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 999px;
-  background: var(--color-accent);
-  color: #fff;
-  font-weight: 600;
+  background: var(--brand-pink);
+  color: var(--brand-white);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   text-decoration: none;
   border: none;
+  box-shadow: 3px 3px 0 var(--brand-white);
   cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.button:hover {
+  color: var(--brand-white);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--brand-white);
 }
 
 .button:disabled,
 .button[aria-disabled='true'] {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.5rem;
+  box-shadow: 6px 6px 0 var(--brand-pink);
 }
 
 .grid {

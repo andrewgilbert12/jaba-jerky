@@ -11,6 +11,13 @@ export interface Product {
 
 export const products: Product[] = [
   {
+    slug: 'chili-garlic',
+    name: 'Chili Garlic',
+    description: 'Our launch flavor: chili and garlic on a wavy strip of tofu jerky. 12g protein per pack.',
+    priceCents: 899,
+    available: false,
+  },
+  {
     slug: 'original-smoked',
     name: 'Original Smoked',
     description: 'Hickory-smoked with tamari, garlic, and black pepper.',
